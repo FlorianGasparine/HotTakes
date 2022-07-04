@@ -7,7 +7,6 @@ const fs = require('fs');
 // Enregistre une nouvelle sauce dans la BDD
 exports.saveSauceInBDD = (req,res,next) => {
     const sauceObject = JSON.parse(req.body.sauce);
-    console.log((sauceObject))
     const sauce = new SauceModel (
         {
             userId : sauceObject.userId,

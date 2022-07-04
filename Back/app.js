@@ -2,10 +2,10 @@
 
 // Import d'express
 const express = require('express');
-
 // Import du package helmet pour la sécurisation de notre application Express
 const helmet = require("helmet");
-
+// Import de dotenv
+const dotenv = require('dotenv').config();
 // Notre application express
 const app = express();
 
@@ -30,7 +30,7 @@ const userRoutes = require('./routes/user');
 // Import package interaction avec BDD
 const mongoose = require('mongoose');
 // Connexion à la BDD
-mongoose.connect('mongodb+srv://User1:User1@cluster0.kovdb5k.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.Connection_MongoDB,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

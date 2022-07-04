@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // Import de notre BDD user
 const User = require('../models/User');
+// Import du packet dotenv
+const dotenv = require('dotenv').config();
 
 
 // user : enregistrement 
@@ -43,7 +45,7 @@ exports.login = (req,res,next) => {
                         userId : user._id,
                         token : jwt.sign(
                             {userId : user._id},
-                            "RANDOM_TOKEN_SECRET",
+                            process.env.RANDOM_TOKEN_SECRET,
                             {expiresIn: '24h'}
                         )
                     })
